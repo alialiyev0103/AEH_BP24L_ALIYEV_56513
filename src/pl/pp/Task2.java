@@ -2,38 +2,29 @@ package pl.pp;
 
 public class Task2 {
     public static void main(String[] args) {
-        int N = 10;
+        Person_Task2 person1 = new Person_Task2();
+        person1.hiToAll();
+        person1.setForename("ali");
+        person1.setSurname("aliyev");
+        person1.setAge(20);
+        person1.hiToAll();
 
-        long startTimeIterative = System.nanoTime();
-        long factorialIterative = calculateFactorialIterative(N);
-        long endTimeIterative = System.nanoTime();
-        long executionTimeIterative = endTimeIterative - startTimeIterative;
+        Person_Task2 person2 = new Person_Task2("carl", "john", 35);
+        person2.hiToAll();
 
-        System.out.println("Factorial of " + N + " (calculated iteratively) is: " + factorialIterative);
-        System.out.println("Execution time for iterative calculation: " + executionTimeIterative + " nanoseconds");
-
-        long startTimeRecursive = System.nanoTime();
-        long factorialRecursive = calculateFactorialRecursive(N);
-        long endTimeRecursive = System.nanoTime();
-        long executionTimeRecursive = endTimeRecursive - startTimeRecursive;
-
-        System.out.println("Factorial of " + N + " (calculated recursively) is: " + factorialRecursive);
-        System.out.println("Execution time for recursive calculation: " + executionTimeRecursive + " nanoseconds");
-    }
-
-    private static long calculateFactorialIterative(int N) {
-        long factorial = 1;
-        for (int i = 1; i <= N; i++) {
-            factorial *= i;
+        person1.growOld(1);
+        for(int i=0; i<3; i++) {
+            person2.growOld(5);
         }
-        return factorial;
-    }
+        person1.hiToAll();
+        person2.hiToAll();
 
-    private static long calculateFactorialRecursive(int N) {
-        if (N == 0 || N == 1) {
-            return 1;
-        } else {
-            return N * calculateFactorialRecursive(N - 1);
-        }
+        System.out.println(person1.getForename());
+        person1.setForename("franklin");
+        System.out.println(person1.getForename());
+        person1.hiToAll();
+
+        person1.beYounger();
+        person1.hiToAll();
     }
 }
