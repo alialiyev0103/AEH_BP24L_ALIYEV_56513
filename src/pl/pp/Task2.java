@@ -1,24 +1,24 @@
-package pl.pp;
 import java.util.Scanner;
 
 public class Task2 {
     public static void main(String[] args) {
-        int x = 10;
-
-        int doubleOfX = x * 2;
-        int xSquared = x * x;
-
-        System.out.println("x = " + x);
-        System.out.println("Double of x = " + doubleOfX);
-        System.out.println("x squared = " + xSquared);
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your age in years:");
-        int ageInYears = scanner.nextInt();
+
+        while (true) {
+            System.out.print("Enter the number of days (enter a non-positive value to exit): ");
+            int days = scanner.nextInt();
+
+            if (days <= 0) {
+                System.out.println("Exiting the program...");
+                break;
+            }
+
+            int weeks = days / 7;
+            int remainingDays = days % 7;
+
+            System.out.println(days + " days is " + weeks + " weeks and " + remainingDays + " days.");
+        }
+
         scanner.close();
-
-        long ageInSeconds = ageInYears * 365 * 24 * 60 * 60;
-
-        System.out.println("My age in seconds: " + ageInSeconds);
     }
 }
