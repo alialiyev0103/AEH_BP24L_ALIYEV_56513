@@ -3,7 +3,7 @@ package pl.pp;
 public class Task1 {
     public static void main(String[] args) {
 
-        System.out.println("Calculations and display of the result for values assigned in the application code");
+        System.out.println("calculations and display of the result for values assigned in the application code");
         boolean gameOver = true;
         int score = 800;
         int levelCompleted = 5;

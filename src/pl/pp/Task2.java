@@ -2,16 +2,38 @@ package pl.pp;
 
 public class Task2 {
     public static void main(String[] args) {
+        int N = 10;
 
-        printCharacter('*', 5, 3);
+        long startTimeIterative = System.nanoTime();
+        long factorialIterative = calculateFactorialIterative(N);
+        long endTimeIterative = System.nanoTime();
+        long executionTimeIterative = endTimeIterative - startTimeIterative;
+
+        System.out.println("Factorial of " + N + " (calculated iteratively) is: " + factorialIterative);
+        System.out.println("Execution time for iterative calculation: " + executionTimeIterative + " nanoseconds");
+
+        long startTimeRecursive = System.nanoTime();
+        long factorialRecursive = calculateFactorialRecursive(N);
+        long endTimeRecursive = System.nanoTime();
+        long executionTimeRecursive = endTimeRecursive - startTimeRecursive;
+
+        System.out.println("Factorial of " + N + " (calculated recursively) is: " + factorialRecursive);
+        System.out.println("Execution time for recursive calculation: " + executionTimeRecursive + " nanoseconds");
     }
 
-    private static void printCharacter(char character, int timesInRow, int lines) {
-        for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < timesInRow; j++) {
-                System.out.print(character);
-            }
-            System.out.println();
+    private static long calculateFactorialIterative(int N) {
+        long factorial = 1;
+        for (int i = 1; i <= N; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
+    private static long calculateFactorialRecursive(int N) {
+        if (N == 0 || N == 1) {
+            return 1;
+        } else {
+            return N * calculateFactorialRecursive(N - 1);
         }
     }
 }
